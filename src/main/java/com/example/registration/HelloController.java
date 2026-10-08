@@ -1,0 +1,23 @@
+package com.example.registration;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloController {
+
+    @GetMapping("/")
+    public String home() {
+        return "Hello from Spring Boot + Docker + Kubernetes!";
+    }
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello Kubernetes!";
+    }
+
+    @GetMapping("/employee")
+    public String employee() {
+        return "Employee: 101, Name: Abhinash";
+    }
+}
