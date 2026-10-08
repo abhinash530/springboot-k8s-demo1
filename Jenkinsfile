@@ -38,8 +38,13 @@ pipeline {
                 ]) {
                     bat '''
                         echo %DOCKER_PASSWORD% | docker login -u %DOCKER_USERNAME% --password-stdin
+                        if errorlevel 1 exit /b 1
+
                         docker tag springboot-k8s-demo1:1.0 %DOCKER_USERNAME%/springboot-k8s-demo1:1.0
+
                         docker push %DOCKER_USERNAME%/springboot-k8s-demo1:1.0
+                        if errorlevel 1 exit /b 1
+
                         docker logout
                     '''
                 }
